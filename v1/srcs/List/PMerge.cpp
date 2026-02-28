@@ -12,7 +12,7 @@
 #include "../../includes/PMerge.hpp"
 #include "../../includes/List.hpp"
 
-std::list<int>	createPend(std::list<int> *main, int sizeOfPair)
+std::list<int>	createPend(std::list<int> *main, int sizeOfElement)
 {
 	std::list<int> pend;
 	std::list<int>::iterator it = main->begin();
@@ -22,16 +22,16 @@ std::list<int>	createPend(std::list<int> *main, int sizeOfPair)
 	{
 		std::list<int>::iterator check = it;
 		int count = 0;
-		while (check != main->end() && count < sizeOfPair)
+		while (check != main->end() && count < sizeOfElement)
 		{
 			++check;
 			++count;
 		}
-		if (count < sizeOfPair)
+		if (count < sizeOfElement)
 			break;
 		if (takeBlock)
 		{
-			for (int i = 0; i < sizeOfPair; ++i)
+			for (int i = 0; i < sizeOfElement; ++i)
 			{
 				pend.push_back(*it);
 				it = main->erase(it);
@@ -39,7 +39,7 @@ std::list<int>	createPend(std::list<int> *main, int sizeOfPair)
 		}
 		else
 		{
-			for (int i = 0; i < sizeOfPair; ++i)
+			for (int i = 0; i < sizeOfElement; ++i)
 				++it;
 		}
 		takeBlock = !takeBlock;
@@ -49,19 +49,19 @@ std::list<int>	createPend(std::list<int> *main, int sizeOfPair)
 
 void	PMerge(std::list<int> *main)
 {
-	int sizeOfPair = 1;
+	int sizeOfElement = 1;
 	std::list<int> pend;
-	while (main->size() / (sizeOfPair) >= 2)
+	while (main->size() / (sizeOfElement) >= 2)
 	{
-		swapMain(main, sizeOfPair);
-		sizeOfPair *= 2;
+		swapMain(main, sizeOfElement);
+		sizeOfElement *= 2;
 	}
-	sizeOfPair /= 2;
-	while (sizeOfPair != 0)
+	sizeOfElement /= 2;
+	while (sizeOfElement != 0)
 	{
 		pend.clear();
-		pend = createPend(main, sizeOfPair);
-		insertPend(main, pend, sizeOfPair);
-		sizeOfPair /= 2;
+		pend = createPend(main, sizeOfElement);
+		insertPend(main, pend, sizeOfElement);
+		sizeOfElement /= 2;
 	}
 }

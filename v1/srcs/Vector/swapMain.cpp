@@ -12,13 +12,13 @@
 #include "../../includes/PMerge.hpp"
 #include "../../includes/Vector.hpp"
 
-void	swapMain(std::vector<int> *main, std::vector<int>::size_type sizeOfPair)
+void	swapMain(std::vector<int> *main, std::vector<int>::size_type sizeOfElement)
 {
-	for (int i = sizeOfPair - 1; i + sizeOfPair < main->size(); i += sizeOfPair * 2)
+	for (int i = sizeOfElement - 1; i + sizeOfElement < main->size(); i += sizeOfElement * 2)
 	{
-		if ((*main)[i] > (*main)[i + sizeOfPair])
+		if ((*main)[i] > (*main)[i + sizeOfElement])
 		{
-			swap(main, sizeOfPair, i, i + sizeOfPair);
+			swap(main, sizeOfElement, i, i + sizeOfElement);
 		}
 		VectComp++;
 	}

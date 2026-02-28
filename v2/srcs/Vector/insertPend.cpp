@@ -12,7 +12,7 @@
 #include "../../includes/PMerge.hpp"
 #include "../../includes/Vector.hpp"
 
-void	insertPend(std::vector<int> *main, std::vector<int> pend, int sizeOfPair)
+void	insertPend(std::vector<int> *main, std::vector<int> pend, int sizeOfElement)
 {
 	int prevJacob = 0;
 	int decalage = 0;
@@ -21,27 +21,27 @@ void	insertPend(std::vector<int> *main, std::vector<int> pend, int sizeOfPair)
 	int nbToPlaceId;
 	int pairId = 0;
 
-	std::vector<int> jacobList = createJacobList<std::vector<int> >(pend.size() / sizeOfPair);//pend.size !!!!! Now main cause pend contains rest
+	std::vector<int> jacobList = createJacobList<std::vector<int> >(pend.size() / sizeOfElement);//pend.size !!!!! Now main cause pend contains rest
 
 	for (std::vector<int>::iterator jacob = jacobList.begin(); jacob != jacobList.end(); ++jacob)
 	{
-		nbToPlaceId = *jacob * sizeOfPair - 1;
+		nbToPlaceId = *jacob * sizeOfElement - 1;
 		if (prevJacob > *jacob)
 		{
 			holding.push_back(prevId);
 			pairId = nbToPlaceId + decalage;
-			pairId += sizeOfPair * holdingToConsider(holding, pairId, sizeOfPair);
-			prevId = placeNumber(main, pend, nbToPlaceId, pairId, sizeOfPair);
+			pairId += sizeOfElement * holdingToConsider(holding, pairId, sizeOfElement);
+			prevId = placeNumber(main, pend, nbToPlaceId, pairId, sizeOfElement);
 		}
 		else if (prevJacob < *jacob)
 		{
 			if (*jacob != 1)
-				decalage += sizeOfPair;
-			decalage += holding.size() * sizeOfPair;
+				decalage += sizeOfElement;
+			decalage += holding.size() * sizeOfElement;
 			holding.clear();
 
 			pairId = nbToPlaceId + decalage;
-			prevId = placeNumber(main, pend, nbToPlaceId, pairId, sizeOfPair);
+			prevId = placeNumber(main, pend, nbToPlaceId, pairId, sizeOfElement);
 		}
 		prevJacob = *jacob;
 	}

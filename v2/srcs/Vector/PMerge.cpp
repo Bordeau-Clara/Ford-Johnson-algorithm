@@ -12,21 +12,21 @@
 #include "../../includes/PMerge.hpp"
 #include "../../includes/Vector.hpp"
 
-std::vector<int>	createPend(std::vector<int> *main, int sizeOfPair)
+std::vector<int>	createPend(std::vector<int> *main, int sizeOfElement)
 {
 	std::vector<int> pend;
 	int i = 0;
-	std::vector<int>::size_type maxPair = (main->size() / sizeOfPair) /* / 2 */;
+	std::vector<int>::size_type maxPair = (main->size() / sizeOfElement);
 
 	std::vector<int>::iterator it = main->begin();
-	while (it != main->end() && pend.size() < maxPair * sizeOfPair)
+	while (it != main->end() && pend.size() < maxPair * sizeOfElement)
 	{
-		if (std::distance(it, main->end()) < sizeOfPair && i == 0)
+		if (std::distance(it, main->end()) < sizeOfElement && i == 0)
 			break;
-		if (i == sizeOfPair)
+		if (i == sizeOfElement)
 		{
 			i = 0;
-			it += sizeOfPair;
+			it += sizeOfElement;
 		}
 		else
 		{
@@ -40,19 +40,19 @@ std::vector<int>	createPend(std::vector<int> *main, int sizeOfPair)
 
 void	PMerge(std::vector<int> *main)
 {
-	int sizeOfPair = 1;
+	int sizeOfElement = 1;
 	std::vector<int> pend;
-	while (main->size() / (sizeOfPair) >= 2)
+	while (main->size() / (sizeOfElement) >= 2)
 	{
-		swapMain(main, sizeOfPair);
-		sizeOfPair *= 2;
+		swapMain(main, sizeOfElement);
+		sizeOfElement *= 2;
 	}
-	sizeOfPair /= 2;
-	while (sizeOfPair != 0)
+	sizeOfElement /= 2;
+	while (sizeOfElement != 0)
 	{
 		pend.clear();
-		pend = createPend(main, sizeOfPair);
-		insertPend(main, pend, sizeOfPair);
-		sizeOfPair /= 2;
+		pend = createPend(main, sizeOfElement);
+		insertPend(main, pend, sizeOfElement);
+		sizeOfElement /= 2;
 	}
 }

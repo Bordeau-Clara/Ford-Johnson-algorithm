@@ -13,7 +13,7 @@
 #include "../../includes/Vector.hpp"
 
 
-int	holdingToConsider(std::vector<int> holding, int nbToPlaceId, int sizeOfPair)
+int	holdingToConsider(std::vector<int> holding, int nbToPlaceId, int sizeOfElement)
 {
 	int toAdd = 0;
 
@@ -22,32 +22,32 @@ int	holdingToConsider(std::vector<int> holding, int nbToPlaceId, int sizeOfPair)
 		if (*it <= nbToPlaceId)
 		{
 			toAdd += 1;
-			nbToPlaceId += sizeOfPair;
+			nbToPlaceId += sizeOfElement;
 		}
 	}
 	return toAdd;
 }
 
-int	placeNumber(std::vector<int> *main, std::vector<int> pend, int nbToPlaceId, int borne, int sizeOfPair)
+int	placeNumber(std::vector<int> *main, std::vector<int> pend, int nbToPlaceId, int borne, int sizeOfElement)
 {
 	std::vector<int> toInsert;
 	int	toCompare = pend[nbToPlaceId];
 
-	for (int j = nbToPlaceId - sizeOfPair + 1; j <= nbToPlaceId; j++)
+	for (int j = nbToPlaceId - sizeOfElement + 1; j <= nbToPlaceId; j++)
 		toInsert.push_back(pend[j]);
 	int i = 0;
-	if (borne == sizeOfPair - 1)
+	if (borne == sizeOfElement - 1)
 	{
 		i = 0;
 		insert(main, toInsert, i);
 		return i;
 	}
-	int temp, downBorne = 0, upBorne = (borne + 1) / sizeOfPair;
+	int temp, downBorne = 0, upBorne = (borne + 1) / sizeOfElement;
 	while(upBorne - downBorne != 1 && upBorne != downBorne)
 	{
 		temp = downBorne + ((upBorne - downBorne) / 2);
 		VectComp++;
-		if (toCompare < (*main)[(temp * sizeOfPair) - 1])
+		if (toCompare < (*main)[(temp * sizeOfElement) - 1])
 		{
 			upBorne = temp;
 		}
@@ -56,7 +56,7 @@ int	placeNumber(std::vector<int> *main, std::vector<int> pend, int nbToPlaceId, 
 			downBorne = temp;
 		}
 	}
-	i += downBorne * sizeOfPair;
+	i += downBorne * sizeOfElement;
 	insert(main, toInsert, i);
 	return i;
 }

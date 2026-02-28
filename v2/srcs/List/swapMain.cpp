@@ -12,13 +12,13 @@
 #include "../../includes/PMerge.hpp"
 #include "../../includes/List.hpp"
 
-void	swapMain(std::list<int> *main, std::list<int>::size_type sizeOfPair)
+void	swapMain(std::list<int> *main, std::list<int>::size_type sizeOfElement)
 {
-	for (int i = sizeOfPair - 1; i + sizeOfPair < main->size(); i += sizeOfPair * 2)
+	for (int i = sizeOfElement - 1; i + sizeOfElement < main->size(); i += sizeOfElement * 2)
 	{
-		if (getNbrFromList(*main, i) > getNbrFromList(*main, i + sizeOfPair))
+		if (getNbrFromList(*main, i) > getNbrFromList(*main, i + sizeOfElement))
 		{
-			swap(main, sizeOfPair, i, i + sizeOfPair);
+			swap(main, sizeOfElement, i, i + sizeOfElement);
 		}
 		ListComp++;
 	}

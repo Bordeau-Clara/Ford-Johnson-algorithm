@@ -12,13 +12,13 @@
 #include "../../includes/PMerge.hpp"
 #include "../../includes/List.hpp"
 
-void	printList(std::list<int> list, int sizeOfPair)
+void	printList(std::list<int> list, int sizeOfElement)
 {
 	int i = 0;
 	for (std::list<int>::iterator it = list.begin(); it != list.end(); ++it)
 	{
 		std::cout << *it;
-		if (i % (sizeOfPair) == sizeOfPair - 1)
+		if (i % (sizeOfElement) == sizeOfElement - 1)
 			std::cout << ", ";
 		else
 			std::cout << " ";
@@ -43,18 +43,18 @@ void	insert(std::list<int> *lst, std::list<int> toInsert, int id)
 
 //idA = index du dernier element de la grande paire
 //idB = index du dernier element de la petite paire
-//sizeOfPair = nombre de nombre dans la pair - 1
+//sizeOfElement = nombre de nombre dans la pair - 1
 //prend le 1er element de la paire idA comme first
 //prend le 1er element de la paire idB comme middle
 //prend le dernier element de la paire idB + 1 comme last car last n'est pas pris en compte
 //=> insere paire idB avant idA
-void	swap(std::list<int> *lst, int sizeOfPair, int idA, int idB)
+void	swap(std::list<int> *lst, int sizeOfElement, int idA, int idB)
 {
 	std::list<int>::iterator first = lst->begin();
-	std::advance(first, idA - (sizeOfPair - 1));
+	std::advance(first, idA - (sizeOfElement - 1));
 	
 	std::list<int>::iterator middle = lst->begin();
-	std::advance(middle, idB - (sizeOfPair - 1));
+	std::advance(middle, idB - (sizeOfElement - 1));
 	
 	std::list<int>::iterator last = lst->begin();
 	std::advance(last, idB + 1);
