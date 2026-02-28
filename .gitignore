@@ -1,0 +1,30 @@
+# Build / object files
+objs/
+*.o
+*.d
+*.obj
+*.out
+*.bin
+
+# Executable
+PMerge
+
+# $(bear -- make re) files
+compile_commands.json
+.cache/
+
+# Tests
+*.txt
+
+# Temporary
+*~
+*.tmp
+*.swp
+
+# Ignore tags
+tags
+
+# Images
+*.pgn
+*.jpeg
+*.jpg
