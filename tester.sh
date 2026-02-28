@@ -190,7 +190,7 @@ fi
 
 i=0
 while true; do
-	./PMerge $(shuf -i "$range" -n "$count") >> "$outfile"
+	v1/PMerge $(shuf -i "$range" -n "$count") >> "$outfile"
 	if [ $? -ne 0 ]; then
 		echo "Error detected after $i tests"
 		exit 1
