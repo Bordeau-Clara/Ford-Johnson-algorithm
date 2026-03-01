@@ -6,7 +6,7 @@
 /*   By: cbordeau <bordeau@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 10:36:30 by cbordeau          #+#    #+#             */
-/*   Updated: 2026/03/01 15:47:50 by cbordeau         ###   LAUSANNE.ch       */
+/*   Updated: 2026/03/01 17:40:30 by cbordeau         ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 extern int ListComp;
 //list PMerge
-void		PMerge(std::list<int> *main);
+void		PMerge(std::list<int> *main, int sizeOfElement);
 void		insertPend(std::list<int> *main, std::list<int> pend, int sizeOfElement);
 void		swapMain(std::list<int> *main, std::list<int>::size_type sizeOfElement);
 void		swap(std::list<int> *lst, int sizeOfElement, int idA, int idB);

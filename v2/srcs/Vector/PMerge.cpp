@@ -38,21 +38,13 @@ std::vector<int>	createPend(std::vector<int> *main, int sizeOfElement)
 	return pend;
 }
 
-void	PMerge(std::vector<int> *main)
+void	PMerge(std::vector<int> *main, int sizeOfElement)
 {
-	int sizeOfElement = 1;
 	std::vector<int> pend;
-	while (main->size() / (sizeOfElement) >= 2)
-	{
-		swapMain(main, sizeOfElement);
-		sizeOfElement *= 2;
-	}
-	sizeOfElement /= 2;
-	while (sizeOfElement != 0)
-	{
-		pend.clear();
-		pend = createPend(main, sizeOfElement);
-		insertPend(main, pend, sizeOfElement);
-		sizeOfElement /= 2;
-	}
+
+	swapMain(main, sizeOfElement);
+	if (main->size() / (sizeOfElement) >= 2)
+		PMerge(main, sizeOfElement * 2);
+	pend = createPend(main, sizeOfElement);
+	insertPend(main, pend, sizeOfElement);
 }

@@ -47,21 +47,12 @@ std::list<int>	createPend(std::list<int> *main, int sizeOfElement)
 	return pend;
 }
 
-void	PMerge(std::list<int> *main)
+void	PMerge(std::list<int> *main, int sizeOfElement)
 {
-	int sizeOfElement = 1;
 	std::list<int> pend;
-	while (main->size() / (sizeOfElement) >= 2)
-	{
 		swapMain(main, sizeOfElement);
-		sizeOfElement *= 2;
-	}
-	sizeOfElement /= 2;
-	while (sizeOfElement != 0)
-	{
-		pend.clear();
-		pend = createPend(main, sizeOfElement);
-		insertPend(main, pend, sizeOfElement);
-		sizeOfElement /= 2;
-	}
+	if (main->size() / (sizeOfElement) >= 2)
+		PMerge(main, sizeOfElement * 2);
+	pend = createPend(main, sizeOfElement);
+	insertPend(main, pend, sizeOfElement);
 }

@@ -45,7 +45,7 @@ int main(int ac, char **av)
 			if (!pushToVec(av[i], &main))
 				std::cerr << "Please enter a positive integer" << std::endl;//print error
 		}
-		PMerge(&main);
+		PMerge(&main, 1);
 		double end = currentTimeMillis();
 		//check sorted vector
 		if (!isSorted(&main))
@@ -67,7 +67,7 @@ int main(int ac, char **av)
 			if (!pushToVec(av[i], &main))
 				std::cerr << "Please enter a positive integer" << std::endl;//print error
 		}
-		PMerge(&main);
+		PMerge(&main, 1);
 		double end = currentTimeMillis();
 		//check sorted list
 		if (!isSorted(&main))
