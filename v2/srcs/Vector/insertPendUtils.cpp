@@ -28,6 +28,7 @@ int	holdingToConsider(std::vector<int> holding, int nbToPlaceId, int sizeOfEleme
 	return toAdd;
 }
 
+//binary insertion
 int	placeNumber(std::vector<int> *main, std::vector<int> pend, int nbToPlaceId, int borne, int sizeOfElement)
 {
 	std::vector<int> toInsert;
@@ -38,7 +39,6 @@ int	placeNumber(std::vector<int> *main, std::vector<int> pend, int nbToPlaceId, 
 	int i = 0;
 	if (borne == sizeOfElement - 1)
 	{
-		i = 0;
 		insert(main, toInsert, i);
 		return i;
 	}
@@ -48,13 +48,9 @@ int	placeNumber(std::vector<int> *main, std::vector<int> pend, int nbToPlaceId, 
 		temp = downBorne + ((upBorne - downBorne) / 2);
 		VectComp++;
 		if (toCompare < (*main)[(temp * sizeOfElement) - 1])
-		{
 			upBorne = temp;
-		}
 		else
-		{
 			downBorne = temp;
-		}
 	}
 	i += downBorne * sizeOfElement;
 	insert(main, toInsert, i);

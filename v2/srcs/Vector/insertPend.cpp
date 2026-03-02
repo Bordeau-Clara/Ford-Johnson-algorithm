@@ -21,7 +21,7 @@ void	insertPend(std::vector<int> *main, std::vector<int> pend, int sizeOfElement
 	int nbToPlaceId;
 	int pairId = 0;
 
-	std::vector<int> jacobList = createJacobList<std::vector<int> >(pend.size() / sizeOfElement);//pend.size !!!!! Now main cause pend contains rest
+	std::vector<int> jacobList = createJacobList<std::vector<int> >(pend.size() / sizeOfElement);
 
 	for (std::vector<int>::iterator jacob = jacobList.begin(); jacob != jacobList.end(); ++jacob)
 	{

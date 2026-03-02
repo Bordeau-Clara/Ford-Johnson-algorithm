@@ -16,7 +16,7 @@ std::vector<int>	createPend(std::vector<int> *main, int sizeOfElement)
 {
 	std::vector<int> pend;
 	int i = 0;
-	std::vector<int>::size_type maxPair = (main->size() / sizeOfElement);
+	std::vector<int>::size_type maxPair = (main->size() / sizeOfElement); //division is usefull to remove non complete elements
 
 	std::vector<int>::iterator it = main->begin();
 	while (it != main->end() && pend.size() < maxPair * sizeOfElement)

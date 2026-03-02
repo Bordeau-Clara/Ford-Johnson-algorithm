@@ -37,7 +37,6 @@ int	placeNumber(std::list<int> *main, std::list<int> pend, int nbToPlaceId, int 
 	int i = 0;
 	if (borne == sizeOfElement - 1)
 	{
-		i = 0;
 		insert(main, toInsert, i);
 		return i;
 	}
@@ -47,13 +46,9 @@ int	placeNumber(std::list<int> *main, std::list<int> pend, int nbToPlaceId, int 
 		temp = downBorne + ((upBorne - downBorne) / 2);
 		ListComp++;
 		if (toCompare < getNbrFromList(*main, (temp * sizeOfElement) - 1))
-		{
 			upBorne = temp;
-		}
 		else
-		{
 			downBorne = temp;
-		}
 	}
 	i += downBorne * sizeOfElement;
 	insert(main, toInsert, i);
