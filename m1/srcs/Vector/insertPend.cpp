@@ -12,7 +12,7 @@
 #include "../../includes/PMerge.hpp"
 #include "../../includes/Vector.hpp"
 
-void	insertPend(std::vector<int> *main, std::vector<int> pend, int sizeOfElement)
+void	insertPend(std::vector<int> *main, std::vector<int> pend)
 {
 	int prevJacob = 0;
 	int decalage = 0;
@@ -21,27 +21,27 @@ void	insertPend(std::vector<int> *main, std::vector<int> pend, int sizeOfElement
 	int nbToPlaceId;
 	int pairId = 0;
 
-	std::vector<int> jacobList = createJacobList<std::vector<int> >(pend.size() / sizeOfElement);
+	std::vector<int> jacobList = createJacobList<std::vector<int> >(pend.size());
 
 	for (std::vector<int>::iterator jacob = jacobList.begin(); jacob != jacobList.end(); ++jacob)
 	{
-		nbToPlaceId = *jacob * sizeOfElement - 1;
+		nbToPlaceId = *jacob - 1;
 		if (prevJacob > *jacob)
 		{
 			holding.push_back(prevId);
 			pairId = nbToPlaceId + decalage;
-			pairId += sizeOfElement * holdingToConsider(holding, pairId, sizeOfElement);
-			prevId = placeNumber(main, pend, nbToPlaceId, pairId, sizeOfElement);
+			pairId += holdingToConsider(holding, pairId);
+			prevId = placeNumber(main, pend, nbToPlaceId, pairId);
 		}
 		else if (prevJacob < *jacob)
 		{
 			if (*jacob != 1)
-				decalage += sizeOfElement;
-			decalage += holding.size() * sizeOfElement;
+				decalage += 1;
+			decalage += holding.size();
 			holding.clear();
 
 			pairId = nbToPlaceId + decalage;
-			prevId = placeNumber(main, pend, nbToPlaceId, pairId, sizeOfElement);
+			prevId = placeNumber(main, pend, nbToPlaceId, pairId);
 		}
 		prevJacob = *jacob;
 	}

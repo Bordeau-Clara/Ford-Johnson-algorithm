@@ -12,16 +12,13 @@
 #include "../../includes/PMerge.hpp"
 #include "../../includes/Vector.hpp"
 
-void	printList(std::vector<int> list, int sizeOfElement)
+void	printList(std::vector<int> list)
 {
 	int i = 0;
 	for (std::vector<int>::iterator it = list.begin(); it != list.end(); ++it)
 	{
 		std::cout << *it;
-		if (i % (sizeOfElement) == sizeOfElement - 1)
-			std::cout << ", ";
-		else
-			std::cout << " ";
+		std::cout << ", ";
 		i++;
 	}
 	std::cout << std::endl;
@@ -48,7 +45,7 @@ void	insert(std::vector<int> *vec, std::vector<int> toInsert, int id)
 //prend le 1er element de la paire idB comme middle
 //prend le dernier element de la paire idB + 1 comme last car last n'est pas pris en compte
 //=> insere paire idB avant idA
-void	swap(std::vector<int> *vec, int sizeOfElement, int idA, int idB)
+void	swap(std::vector<int> *vec, int idA, int idB)
 {
-	std::rotate(vec->begin() + idA - (sizeOfElement - 1), vec->begin() + idB - (sizeOfElement - 1), vec->begin() + idB + 1);
+	std::rotate(vec->begin() + idA, vec->begin() + idB, vec->begin() + idB + 1);
 }

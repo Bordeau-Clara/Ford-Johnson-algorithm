@@ -15,13 +15,13 @@
 
 extern int VectComp;
 //vector PMerge
-void		PMerge(std::vector<int> *main, int sizeOfElement);
-void		insertPend(std::vector<int> *main, std::vector<int> pend, int sizeOfElement);
-void		swapMain(std::vector<int> *main, std::vector<int>::size_type sizeOfElement);
-void		swap(std::vector<int> *vec, int sizeOfElement, int idA, int idB);
+void		PMerge(std::vector<int> *main, std::vector<int> *pend);
+void		insertPend(std::vector<int> *main, std::vector<int> newPend, std::vector<int> *pend, std::vector<int> pendOfPend);
+void		swapMain(std::vector<int> *main, std::vector<int> *pend);
+void		swap(std::vector<int> *vec, int idA, int idB);
 void		insert(std::vector<int> *vec, std::vector<int> toInsert, int id);
-int			holdingToConsider(std::vector<int> holding, int nbToPlaceId, int sizeOfElement);
-int			placeNumber(std::vector<int> *main, std::vector<int> pend, int nbToPlaceId, int borne, int sizeOfElement);
-void		printList(std::vector<int> list, int sizeOfElement);
+int			holdingToConsider(std::vector<int> holding, int nbToPlaceId);
+int			placeNumber(std::vector<int> *main, std::vector<int> pend, int nbToPlaceId, int borne);
+void		printList(std::vector<int> list);
 void		printInfo(int nbToPlaceId, int pairId, std::vector<int> pend, std::vector<int> main, int decalage);
 
